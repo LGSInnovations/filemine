@@ -1,0 +1,12 @@
+
+.pane {
+    margin: 12px;
+    border: 1px solid silver;
+    padding: 12px;
+    border-radius: 3px;
+    overflow: auto;
+}
+.pane-header .status {
+    font-weight: bold;
+    margin-bottom: 5px;
+}

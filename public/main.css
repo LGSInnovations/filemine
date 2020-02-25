@@ -1,0 +1,18 @@
+
+  
+body, #whole {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: sans-serif;
+    color: gray;
+}
+#top {background: aliceblue;}
+#logo {margin: 5px 15px 0px;}
+.iblock {
+    display: inline-block;
+    vertical-align: top;
+    padding: 3px;
+}

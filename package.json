@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/LGSInnovations/filemine#readme",
   "dependencies": {
-    "minimal-server-for-frontend-dev": "^1.0.1"
+    "minimal-server-for-frontend-dev": "^1.0.2"
   }
 }
