@@ -10,6 +10,10 @@
     justify-content: space-between;
     align-items: center;
     opacity: .5;
+    margin: 12px;
+}
+pre {
+    margin: 0;
 }
 pre.match {
     font-weight: bold;
