@@ -7,4 +7,6 @@ To serve this tool's webpage, git clone https://github.com/LGSInnovations/filemi
 
     node node_modules/minimal-server-for-frontend-dev/minimalSelfHoster.js
 
+![Screenshot 1](https://user-images.githubusercontent.com/3712209/75375754-f6a61780-588b-11ea-9e99-aa5e825803e8.png)
 
+![Screenshot 2](https://user-images.githubusercontent.com/3712209/75375845-2bb26a00-588c-11ea-981b-cf6d5328f107.png)
