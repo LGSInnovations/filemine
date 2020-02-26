@@ -1,0 +1,20 @@
+
+.results-file-name {
+    font-weight: bold;
+    margin: 12px;
+}
+.skipped {
+    font-size: 14px;
+    width: 36ch;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    opacity: .5;
+}
+pre.match {
+    font-weight: bold;
+}
+pre.context {
+    margin: 0;
+    background: whitesmoke;
+}
