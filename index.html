@@ -108,7 +108,7 @@ pre.context {
 
         <div class="pane files iblock">
             <div class="pane-header iblock">
-                <div class="status files iblock">Files: <span class="count">1</span></div>
+                <div class="status files iblock">Files: <span class="count">0</span></div>
                 <label class="button iblock" for="file-input">
                     Add Files
                     <input type="file" id="file-input" multiple="">
@@ -121,7 +121,7 @@ pre.context {
 
         <div class="pane phrases iblock">
             <div class="pane-header iblock">
-                <div class="status phrases iblock">Phrases: <span class="count">1</span></div>
+                <div class="status phrases iblock">Phrases: <span class="count">0</span></div>
                 <input type="text" placeholder="Add Phrase">
             </div>
             <div class="pane-body"></div>
@@ -344,6 +344,7 @@ setTimeout(() => {
     document.querySelector('.phrases .pane-body').innerHTML = '';
     document.querySelector('.files .pane-body').innerHTML = '';
     document.querySelector('#bottom').innerHTML = '';
+    document.querySelectorAll('.count').forEach(span => span.innerText = '0');
     app.fileResults = {};
     app.files = [];
     document.body.style = '';
