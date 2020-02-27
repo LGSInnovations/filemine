@@ -1,7 +1,8 @@
 # filemine
 A tool for comparing results when finding words in log files
+https://lgsinnovations.github.io/filemine/
 
-To serve this tool's webpage:
+To serve this tool's webpage on your own server:
 
     git clone https://github.com/LGSInnovations/filemine.git
     cd filemine
