@@ -4,7 +4,8 @@
   "description": "A tiny tool for comparing results when finding words in log files",
   "main": "none",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node node_modules/minimal-server-for-frontend-dev/minimalSelfHoster.js"
   },
   "repository": {
     "type": "git",
