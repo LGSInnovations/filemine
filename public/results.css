@@ -1,4 +1,7 @@
 
+#bottom {
+    margin-right: -1000px;
+}
 .file-results {
     margin-bottom: 25px;
 }
@@ -17,11 +20,11 @@
 }
 pre {
     margin: 0;
+    padding-left: 12px;
 }
 pre.match {
     font-weight: bold;
 }
 pre.context {
-    margin: 0;
     background: whitesmoke;
 }
