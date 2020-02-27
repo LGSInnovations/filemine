@@ -8,7 +8,7 @@ document.addEventListener('click', (event) => {
     const moreLines = isEnd ? skipped.splice(-10, 10) : skipped.splice(0, 10);
     const skippedLine = event.target.closest('.skipped');
     const where = isEnd ? 'afterEnd' : 'beforeBegin';
-    skippedLine.insertAdjacentHTML(where, '<pre class="context">' + moreLines.join('\n') + '</pre>');
+    skippedLine.insertAdjacentHTML(where, '<pre class="context">\n' + moreLines.join('\n') + '</pre>');
     if (!skipped.length) {
         skippedLine.style.display = 'none';
     } else {
