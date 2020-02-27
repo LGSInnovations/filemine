@@ -24,6 +24,7 @@ setTimeout(() => {
     document.querySelector('.phrases .pane-body').innerHTML = '';
     document.querySelector('.files .pane-body').innerHTML = '';
     document.querySelector('#bottom').innerHTML = '';
+    document.querySelectorAll('.count').forEach(span => span.innerText = '0');
     app.fileResults = {};
     app.files = [];
     document.body.style = '';
