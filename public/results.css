@@ -18,6 +18,9 @@
     opacity: .5;
     margin: 12px;
 }
+.skipped .button {
+    user-select: none;
+}
 pre {
     margin: 0;
     padding-left: 12px;
