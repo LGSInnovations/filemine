@@ -1,355 +1,398 @@
-<html><head>
-  <title>FileMine</title>
-  <style data-id="button.css">
-  
-.button {
-    background: #ddd;
-    border-radius: 3px;
-    padding: 4px;
-    margin: 0px 3px;
-    font-size: 14px;
-    cursor: pointer;
-}
+<html>
 
-</style>
-<style data-id="input.css">
-  
-input[type="text"] {
-    font-size: 14px;
-    width: 12ch;
-    padding: 2px;
-}
-input[type="checkbox"] {
-    margin: 5px;
-}
-input[type="file"] {
-    display: none;
-}
+<head>
+	<style data-id="button.css">
+		.button {
+			background: #ddd;
+			border-radius: 3px;
+			padding: 4px;
+			margin: 0px 3px;
+			font-size: 14px;
+			cursor: pointer;
+		}
+	</style>
+	<style data-id="input.css">
+		input[type="text"] {
+			font-size: 14px;
+			width: 12ch;
+			padding: 2px;
+		}
 
-</style>
-<style data-id="main.css">
-  
-body, #whole {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    font-family: sans-serif;
-    color: gray;
-}
-#top {background: aliceblue;}
-#logo {margin: 5px 15px 0px;}
-#logo a {
-    color: gray;
-    font-style: italic;
-}
-.iblock {
-    display: inline-block;
-    vertical-align: top;
-    padding: 3px;
-}
+		input[type="checkbox"] {
+			margin: 5px;
+		}
 
-</style>
-<style data-id="pane.css">
-  
-.pane {
-    margin: 12px;
-    border: 1px solid silver;
-    padding: 12px;
-    border-radius: 3px;
-    overflow: auto;
-}
-.pane-header .status {
-    font-weight: bold;
-    margin-bottom: 5px;
-}
+		input[type="file"] {
+			display: none;
+		}
+	</style>
+	<style data-id="main.css">
+		body,
+		#whole {
+			height: 100%;
+			width: 100%;
+			margin: 0;
+			display: flex;
+			flex-direction: column;
+			font-family: sans-serif;
+			color: gray;
+		}
 
-</style>
-<style data-id="results.css">
-  
-#bottom {
-    margin-right: -1000px;
-}
-.file-results {
-    margin-bottom: 25px;
-}
-.results-file-name {
-    font-weight: bold;
-    margin: 12px;
-}
-.skipped {
-    font-size: 14px;
-    width: 36ch;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    opacity: .5;
-    margin: 12px;
-}
-pre {
-    margin: 0;
-    padding-left: 12px;
-}
-pre.match {
-    font-weight: bold;
-}
-pre.context {
-    background: whitesmoke;
-}
+		#top {
+			background: aliceblue;
+		}
 
-</style>
-</head><body style="">
-<!-- main-1a-top-partial.html -->
+		#logo {
+			margin: 5px 15px 0px;
+		}
 
-<div id="whole">
-    <div id="top">
-        <div id="logo">FileMine (<a target="_blank" href="https://github.com/LGSInnovations/filemine">code on GitHub</a>)</div>
+		#logo a {
+			color: gray;
+			font-style: italic;
+		}
 
-<!-- main-1b-files.html -->
+		.iblock {
+			display: inline-block;
+			vertical-align: top;
+			padding: 3px;
+		}
+	</style>
+	<style data-id="pane.css">
+		.pane {
+			margin: 12px;
+			border: 1px solid silver;
+			padding: 12px;
+			border-radius: 3px;
+			overflow: auto;
+		}
 
-        <div class="pane files iblock">
-            <div class="pane-header iblock">
-                <div class="status files iblock">Files: <span class="count">0</span></div>
-                <label class="button iblock" for="file-input">
-                    Add Files
-                    <input type="file" id="file-input" multiple="">
-                </label>
-            </div>
-            <div class="pane-body"></div>
-        </div>
+		.pane-header .status {
+			font-weight: bold;
+			margin-bottom: 5px;
+		}
+	</style>
+	<style data-id="results.css">
+		#bottom {
+			margin-right: -1000px;
+		}
 
-<!-- main-1c-phrases.html -->
+		.file-results {
+			margin-bottom: 25px;
+		}
 
-        <div class="pane phrases iblock">
-            <div class="pane-header iblock">
-                <div class="status phrases iblock">Phrases: <span class="count">0</span></div>
-                <input type="text" placeholder="Add Phrase">
-            </div>
-            <div class="pane-body"></div>
-        </div>
+		.results-file-name {
+			font-weight: bold;
+			margin: 12px;
+		}
 
-<!-- main-1d-options.html -->
+		.skipped {
+			font-size: 14px;
+			width: 36ch;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			opacity: .5;
+			margin: 12px;
+		}
 
-<div class="pane options iblock" style="display: none">
-    <div class="pane-header">
-        <div class="status">Options</div>
-    </div>
-    <div class="pane-body">
-        <div class="options item">
-            <div>Amount of Context</div>
-            <div><input type="radio" checked=""> None</div>
-            <div><input type="radio"> Ancestors</div>
-            <div><input type="radio"> Ancestors and Descendants</div>
-        </div>
-    </div>
-</div>
+		.skipped .button {
+			user-select: none;
+		}
 
-<!-- main-1e-supplemental-textarea.html -->
+		pre {
+			margin: 0;
+			padding-left: 12px;
+		}
 
-<div class="pane supplemental-display iblock" style="display: none;">
-    <textarea class="supplemental-display" placeholder="scratch"></textarea>
-</div>
+		pre.match {
+			font-weight: bold;
+		}
 
-<!-- main-2a-middle-partial.html -->
-</div><div id="bottom"></div></div>
-<script>
-  function code(name, body) {
-    fetch('/public/' + name, {method: 'POST', body}).then(() => location.reload());
-  }
-</script>
-<script data-id="early-app.js">
+		pre.context {
+			background: whitesmoke;
+		}
+	</style>
+</head>
 
-app = {files: [], fileResults: {}};
+<body>
+	<!-- main-1a-top-partial.html -->
 
-</script>
-<script data-id="js-setup-doSearch.js">
+	<div id="whole">
+		<div id="top">
+			<div id="logo">FileMine (<a target="_blank" href="https://github.com/LGSInnovations/filemine">code on
+					GitHub</a>)</div>
 
-app.doSearch = () => {
-    const displayArea = document.querySelector('#bottom');
-    displayArea.innerHTML = '';
-    const fileItems = document.querySelectorAll('.files.item')
-    const isSelectedLookup = Array.from(fileItems).reduce((lookup, item) => {
-        lookup[item.innerText.trim()] = item.querySelector('input').checked;
-        return lookup;
-    }, {});
-    const phrases = Array.from(document.querySelectorAll('.phrases.item'))
-        .filter(item => item.querySelector('input').checked)
-        .map(item => item.innerText.trim());
-    app.files.forEach(file => {
-        if (!isSelectedLookup[file.name]) {
-            return;
-        }
-        const {fileName, results} = app.searchFile(phrases, file);
-        app.fileResults[fileName] = results;
-        const html = '<div class="file-results"><div class="results-file-name">' + fileName + '</div>' + 
-            results.map((result, idx) => {
-                if (result.hideLines) {
-                    return '<div class="skipped">' +
-                        `<div class="button iblock" data-file="${fileName}" data-idx="${idx}">Show Start</div>` +
-                            'Skipped: <div class="count iblock">' + result.hideLines.length + '</div>' +
-                        `<div class="button iblock" data-file="${fileName}" data-idx="${idx}" data-end="true">Show End</div>` +
-                    '</div>';
-                } else if (result.showLine) {
-                    return '<pre class="match">' + result.showLine + '</pre>';
-                } else {
-                    console.error('Unknown result:', Object.keys(result));
-                }
-            }).join('\n') + '</div>';
-        displayArea.insertAdjacentHTML('beforeend', html);
-    });
-};
+			<!-- main-1b-files.html -->
 
-</script>
-<script data-id="js-setup-searchFile.js">
+			<div class="pane files iblock">
+				<div class="pane-header iblock">
+					<div class="status files iblock">Files: <span class="count">0</span></div>
+					<label class="button iblock" for="file-input">
+						Add Files
+						<input type="file" id="file-input" multiple="">
+					</label>
+				</div>
+				<div class="pane-body">
+				</div>
+			</div>
 
-app.searchFile = (phrases, file) => {
-    const {recent, results} = file.lines.reduce((state, line) => {
-        const spaces = line.match(/^s*/)[0];
-        const isMatch = phrases.some(phrase => line.toLowerCase().includes(phrase.toLowerCase()));
-        if (isMatch && state.recent.length) {
-            state.results.push({hideLines: state.recent});
-            state.recent = [];
-        }
-        if (isMatch) {
-            state.results.push({showLine: line}); // TODO highlight 1 or more matches? hard with html
-        } else {
-            state.recent.push(line);
-        }
-        state.numSpaces = spaces.length;
-        return state;
-    }, {recent: [], results: []});
-    // const maxNumSize = String(file.lines.length).length;
-    // const matches = file.lines
-    //     .map((line, i) => [Array(maxNumSize - String(i).length).fill(' ').join('') + i, line])
-    //     .map(linePair => linePair.join(': '));
-    if (recent.length) {
-        results.push({hideLines: recent});
-    }
-    return ({fileName: file.name, results});
-};
+			<!-- main-1c-phrases.html -->
 
-</script>
-<script data-id="js-setup-showMoreInList.js">
+			<div class="pane phrases iblock">
+				<div class="pane-header iblock">
+					<div class="status phrases iblock">Phrases: <span class="count">0</span></div>
+					<input type="text" placeholder="Add Phrase">
+				</div>
+				<div class="pane-body">
+				</div>
+			</div>
 
-app.showMoreInList = (names, classname) => {
-    const count = document.querySelector(`.pane.${classname} .count`);
-    count.innerText = Number(count.innerText) + names.length;
-    const paneBody = document.querySelector(`.pane.${classname} .pane-body`);
-    names.forEach(name => {
-        paneBody.insertAdjacentHTML('beforeend', `
-            <div class="${classname} item" id="${classname}-${name}">
-                <input type="checkbox" checked>
-                <div class="iblock">${name}</div>
-            </div>
-        `);
-    });
-};
+			<!-- main-1d-options.html -->
 
-</script>
-<script data-id="main-checkbox-change.js">
+			<div class="pane options iblock" style="display: none">
+				<div class="pane-header">
+					<div class="status">Options</div>
+				</div>
+				<div class="pane-body">
+					<div class="options item">
+						<div>Amount of Context</div>
+						<div><input type="radio" checked=""> None</div>
+						<div><input type="radio"> Ancestors</div>
+						<div><input type="radio"> Ancestors and Descendants</div>
+					</div>
+				</div>
+			</div>
 
-document.addEventListener('change',  event => {
-    if (event.target.getAttribute('type') !== 'checkbox') {
-        return;
-    }
-    app.doSearch();
-});
+			<!-- main-1e-supplemental-textarea.html -->
 
-</script>
-<script data-id="main-file-change.js">
+			<div class="pane supplemental-display iblock" style="display: none;">
+				<textarea class="supplemental-display" placeholder="scratch"></textarea>
+			</div>
 
-const getName = file => {
-    return app.fileResults[file.name] ?
-        file.name + ' ' + new Date(file.lastModified).toLocaleString() : file.name;
-};
-document.querySelector('#file-input').addEventListener('change',  event => {
-    const fileArray = Array.from(event.target.files);
-    app.showMoreInList(fileArray.map(file => getName(file)), 'files');
-    app.ready = false;
-    let numFiles = 0;
-    fileArray.forEach(file => {
-        // Note: app.files will not necessarily be in the same order as the displayed list
-        file.text().then(text => {
-            app.files.push({name: getName(file), lines: text.split('\n')});
-            if (++numFiles === fileArray.length) {
-                app.ready = true;
-                app.doSearch();
-            }
-        });
-    });
-});
+			<!-- main-2a-middle-partial.html -->
+		</div>
+		<div id="bottom">
+			<!-- main-3a-bottom-partial.html -->
+		</div>
+	</div>
+	<script>
+		function code(name, body) {
+			fetch('/public/' + name, { method: 'POST', body }).then(() => location.reload());
+		}
+	</script>
+	<script data-id="early-app.js">
 
-</script>
-<script data-id="main-phrase-input.js">
 
-const registerSearchPhrase = (textInputElement) => {
-    if (!event.target.value) return;
-    app.showMoreInList([event.target.value], 'phrases');
-    event.target.value = '';
-    app.doSearch();
-};
-document.querySelector('.pane.phrases input').addEventListener('keyup', (event) => {
-    if (event.key === 'Enter') {
-        registerSearchPhrase(event.target);
-    }
-});
-document.querySelector('.pane.phrases input').addEventListener('blur', (event) => {
-    registerSearchPhrase(event.target);
-});
+		app = { files: [], fileResults: {} };
 
-</script>
-<script data-id="main-showSkipped.js">
 
-document.addEventListener('click', (event) => {
-    const fileName = event.target.getAttribute('data-file');
-    const resultsIdx = event.target.getAttribute('data-idx');
-    if (!fileName || !resultsIdx) return;
-    const isEnd = event.target.getAttribute('data-end');
-    const skipped = app.fileResults[fileName][resultsIdx].hideLines;
-    const moreLines = isEnd ? skipped.splice(-10, 10) : skipped.splice(0, 10);
-    const skippedLine = event.target.closest('.skipped');
-    const where = isEnd ? 'afterEnd' : 'beforeBegin';
-    skippedLine.insertAdjacentHTML(where, '<pre class="context">\n' + moreLines.join('\n') + '</pre>');
-    if (!skipped.length) {
-        skippedLine.style.display = 'none';
-    } else {
-        skippedLine.querySelector('.count').innerText = skipped.length;
-    }
-});
+	</script>
+	<script data-id="js-setup-doSearch.js">
 
-</script>
-<script data-id="test1.js">
+		app.doSearch = () => {
+			const displayArea = document.querySelector('#bottom');
+			displayArea.innerHTML = '';
+			const fileItems = document.querySelectorAll('.files.item')
+			const isSelectedLookup = Array.from(fileItems).reduce((lookup, item) => {
+				lookup[item.innerText.trim()] = item.querySelector('input').checked;
+				return lookup;
+			}, {});
+			const phrases = Array.from(document.querySelectorAll('.phrases.item'))
+				.filter(item => item.querySelector('input').checked)
+				.map(item => item.innerText.trim());
+			app.files.forEach(file => {
+				if (!isSelectedLookup[file.name]) {
+					return;
+				}
+				const { fileName, results } = app.searchFile(phrases, file);
+				app.fileResults[fileName] = results;
+				const html = '<div class="file-results"><div class="results-file-name">' + fileName + '</div>' +
+					results.map((result, idx) => {
+						if (result.hideLines) {
+							return '<div class="skipped">' +
+								`<div class="button iblock" data-file="${fileName}" data-idx="${idx}">Show Start</div>` +
+								'Skipped: <div class="count iblock">' + result.hideLines.length + '</div>' +
+								`<div class="button iblock" data-file="${fileName}" data-idx="${idx}" data-end="true">Show End</div>` +
+								'</div>';
+						} else if (result.showLine) {
+							return '<pre class="match">' + result.showLine + '</pre>';
+						} else {
+							console.error('Unknown result:', Object.keys(result));
+						}
+					}).join('\n') + '</div>';
+				displayArea.insertAdjacentHTML('beforeend', html);
+			});
+		};
 
-document.body.style.marginTop = '200%';
-const dT = new ClipboardEvent('').clipboardData || // Firefox < 62 workaround exploiting https://bugzilla.mozilla.org/show_bug.cgi?id=1422655
-  new DataTransfer(); // specs compliant (as of March 2018 only Chrome)
-dT.items.add(new File(["This is\n  text content"], "sample.txt", {type: "text/plain", lastModified: Date.now()}));
-const fileInput = document.querySelector('#file-input')
-fileInput.files = dT.files;
-console.assert(fileInput.files.length === 1, 'Test1 failed to set up sample file.');
-fileInput.dispatchEvent(new Event('change'));
-const phraseInput = document.querySelector('.phrases input[type="text"]');
-phraseInput.value = 'content';
-phraseInput.dispatchEvent(new Event('blur'));
-setTimeout(() => {
-    const bottom = document.querySelector('#bottom');
-    console.assert(bottom.querySelectorAll('.file-results').length === 1, 'Test1 failed to display 1 result');
-    console.assert(document.querySelector('.results-file-name').innerText === 'sample.txt', 'Test1 failed to display the filename "sample.txt"');
-    console.assert(document.querySelector('.file-results').childElementCount === 3, 'Test1 file results did not have three parts (file name, skipped, and match)');
-    console.assert(document.querySelector('.skipped').childElementCount === 3, 'Test1 skipped did not have three parts (show start, count, and show end)');
-    console.assert(document.querySelector('.match').innerText === '  text content', 'Test1 did not show matched line "  text content"');
-    console.assert(!document.querySelector('.file-results').innerText.includes('This is'), 'Test1 showed unmatched line "This is" before it should have');
-    document.querySelector('.button[data-file]').click()
-    console.assert(document.querySelector('.file-results').innerText.includes('This is'), 'Test1 did not show context line "This is" when it should have');
-    console.info('Test1 ran');
-    document.querySelector('.phrases .pane-body').innerHTML = '';
-    document.querySelector('.files .pane-body').innerHTML = '';
-    document.querySelector('#bottom').innerHTML = '';
-    document.querySelectorAll('.count').forEach(span => span.innerText = '0');
-    app.fileResults = {};
-    app.files = [];
-    document.body.style = '';
-}, 15);
+	</script>
+	<script data-id="js-setup-searchFile.js">
 
-</script></body></html>
+		app.searchFile = (phrases, file) => {
+			const { recent, results } = file.lines.reduce((state, line) => {
+				const spaces = line.match(/^s*/)[0];
+				const isMatch = phrases.some(phrase => line.toLowerCase().includes(phrase.toLowerCase()));
+				if (isMatch && state.recent.length) {
+					state.results.push({ hideLines: state.recent });
+					state.recent = [];
+				}
+				if (isMatch) {
+					state.results.push({ showLine: line }); // TODO highlight 1 or more matches? hard with html
+				} else {
+					state.recent.push(line);
+				}
+				state.numSpaces = spaces.length;
+				return state;
+			}, { recent: [], results: [] });
+			// const maxNumSize = String(file.lines.length).length;
+			// const matches = file.lines
+			//     .map((line, i) => [Array(maxNumSize - String(i).length).fill(' ').join('') + i, line])
+			//     .map(linePair => linePair.join(': '));
+			if (recent.length) {
+				results.push({ hideLines: recent });
+			}
+			return ({ fileName: file.name, results });
+		};
+
+	</script>
+	<script data-id="js-setup-showMoreInList.js">
+
+		app.showMoreInATopList = (names, classname) => {
+			const count = document.querySelector(`.pane.${classname} .count`);
+			count.innerText = Number(count.innerText) + names.length;
+			const paneBody = document.querySelector(`.pane.${classname} .pane-body`);
+			names.forEach(name => {
+				paneBody.insertAdjacentHTML('beforeend', `
+				<div class="${classname} item" id="${classname}-${name}">
+					<input type="checkbox" checked>
+					<div class="iblock">${name}</div>
+				</div>
+			`);
+			});
+		};
+		app.showMoreInATopList(JSON.parse(localStorage.getItem('phrases')), 'phrases');
+
+	</script>
+	<script data-id="js-setup-updateLocalStorageList.js">
+
+		app.updateLocalStorageList = (className) => {
+			const newList = [...document.querySelectorAll('.phrases.item')]
+				.filter(item => item.querySelector('input[type="checkbox"]').checked)
+				.map(item => item.querySelector('div.iblock').innerText)
+			localStorage.setItem(className, JSON.stringify(newList));
+		}
+
+	</script>
+	<script data-id="main-checkbox-change.js">
+
+		document.addEventListener('change', event => {
+			if (event.target.getAttribute('type') !== 'checkbox') {
+				return;
+			}
+			if (event.target.closest('.phrases.item')) {
+				app.updateLocalStorageList('phrases');
+			}
+			app.doSearch();
+		});
+
+	</script>
+	<script data-id="main-file-change.js">
+
+		const getName = file => {
+			return app.fileResults[file.name] ?
+				file.name + ' ' + new Date(file.lastModified).toLocaleString() : file.name;
+		};
+		document.querySelector('#file-input').addEventListener('change', event => {
+			const fileArray = Array.from(event.target.files);
+			app.showMoreInATopList(fileArray.map(file => getName(file)), 'files');
+			app.ready = false;
+			let numFiles = 0;
+			fileArray.forEach(file => {
+				// Note: app.files will not necessarily be in the same order as the displayed list
+				file.text().then(text => {
+					app.files.push({ name: getName(file), lines: text.split('\n') });
+					if (++numFiles === fileArray.length) {
+						app.ready = true;
+						app.doSearch();
+					}
+				});
+			});
+		});
+
+	</script>
+	<script data-id="main-phrase-input.js">
+
+		const registerSearchPhrase = (textInputElement) => {
+			if (!event.target.value) return;
+			app.showMoreInATopList([event.target.value], 'phrases');
+			app.updateLocalStorageList('phrases');
+			event.target.value = '';
+			app.doSearch();
+		};
+		document.querySelector('.pane.phrases input[type="text"]').addEventListener('keyup', (event) => {
+			if (event.key === 'Enter') {
+				registerSearchPhrase(event.target);
+			}
+		});
+		document.querySelector('.pane.phrases input[type="text"]').addEventListener('blur', (event) => {
+			registerSearchPhrase(event.target);
+		});
+
+	</script>
+	<script data-id="main-showSkipped.js">
+
+		document.addEventListener('click', (event) => {
+			const fileName = event.target.getAttribute('data-file');
+			const resultsIdx = event.target.getAttribute('data-idx');
+			if (!fileName || !resultsIdx) return;
+			const isEnd = event.target.getAttribute('data-end');
+			const skipped = app.fileResults[fileName][resultsIdx].hideLines;
+			const moreLines = isEnd ? skipped.splice(-10, 10) : skipped.splice(0, 10);
+			const skippedLine = event.target.closest('.skipped');
+			const where = isEnd ? 'afterEnd' : 'beforeBegin';
+			skippedLine.insertAdjacentHTML(where, '<pre class="context">\n' + moreLines.join('\n') + '</pre>');
+			if (!skipped.length) {
+				skippedLine.style.display = 'none';
+			} else {
+				skippedLine.querySelector('.count').innerText = skipped.length;
+			}
+		});
+
+	</script>
+	<script data-id="test1.js">
+
+	// TODO 1) make this test less flaky (via iframe?) and 2) overcome the localStorage issue
+	// document.body.style.marginTop = '200%';
+	// const dT = new ClipboardEvent('').clipboardData || // Firefox < 62 workaround exploiting https://bugzilla.mozilla.org/show_bug.cgi?id=1422655
+	//   new DataTransfer(); // specs compliant (as of March 2018 only Chrome)
+	// dT.items.add(new File(["This is\n  text content"], "sample.txt", {type: "text/plain", lastModified: Date.now()}));
+	// const fileInput = document.querySelector('#file-input')
+	// fileInput.files = dT.files;
+	// console.assert(fileInput.files.length === 1, 'Test1 failed to set up sample file.');
+	// fileInput.dispatchEvent(new Event('change'));
+	// const phraseInput = document.querySelector('.phrases input[type="text"]');
+	// phraseInput.value = 'content';
+	// phraseInput.dispatchEvent(new Event('blur'));
+	// setTimeout(() => {
+	//     const bottom = document.querySelector('#bottom');
+	//     console.assert(bottom.querySelectorAll('.file-results').length === 1, 'Test1 failed to display 1 result');
+	//     console.assert(document.querySelector('.results-file-name').innerText === 'sample.txt', 'Test1 failed to display the filename "sample.txt"');
+	//     console.assert(document.querySelector('.file-results').childElementCount === 3, 'Test1 file results did not have three parts (file name, skipped, and match)');
+	//     console.assert(document.querySelector('.skipped').childElementCount === 3, 'Test1 skipped did not have three parts (show start, count, and show end)');
+	//     console.assert(document.querySelector('.match').innerText === '  text content', 'Test1 did not show matched line "  text content"');
+	//     console.assert(!document.querySelector('.file-results').innerText.includes('This is'), 'Test1 showed unmatched line "This is" before it should have');
+	//     document.querySelector('.button[data-file]').click()
+	//     console.assert(document.querySelector('.file-results').innerText.includes('This is'), 'Test1 did not show context line "This is" when it should have');
+	//     console.info('Test1 ran');
+	//     document.querySelector('.phrases .pane-body').innerHTML = '';
+	//     document.querySelector('.files .pane-body').innerHTML = '';
+	//     document.querySelector('#bottom').innerHTML = '';
+	//     document.querySelectorAll('.count').forEach(span => span.innerText = '0');
+	//     app.fileResults = {};
+	//     app.files = [];
+	//     document.body.style = '';
+	// }, 15);
+
+	</script>
+</body>
+
+</html>
