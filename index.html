@@ -1,6 +1,7 @@
 <html>
 
 <head>
+	<title>FileMine</title>
 	<style data-id="button.css">
 		.button {
 			background: #ddd;
@@ -184,6 +185,10 @@
 
 
 		app = { files: [], fileResults: {} };
+
+		if (!localStorage.getItem('phrases')) {
+			localStorage.setItem('phrases', JSON.stringify([]));
+		}
 
 
 	</script>
